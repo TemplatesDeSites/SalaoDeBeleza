@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty | Salão de Beleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container">
+      <button class="nav-toggle" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-left">
+        <span class="nav-separator" aria-hidden="true"></span>
+        <a href="#" class="logo">Beauty</a>
+      </div>
+      <ul class="nav-menu" role="navigation" aria-label="Menu principal">
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+      <div class="nav-drawer" id="nav-drawer" aria-hidden="true">
+        <div class="nav-drawer-header">
+          <button type="button" class="nav-drawer-close" aria-label="Fechar menu">
+            <span aria-hidden="true">×</span>
+          </button>
+          <span class="nav-drawer-sep" aria-hidden="true"></span>
+          <a href="#" class="nav-drawer-logo">Beauty</a>
+        </div>
+        <nav class="nav-drawer-links">
+          <a href="#inicio">Início</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#contato">Contato</a>
+        </nav>
+        <div class="nav-drawer-social">
+          <p class="nav-drawer-social-title">Follow us:</p>
+          <div class="nav-drawer-social-icons">
+            <a href="#" class="nav-drawer-icon" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="nav-drawer-icon" aria-label="Facebook">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="nav-drawer-buttons">
+          <a href="#contato" class="btn btn-drawer btn-drawer-primary">Agendar</a>
+          <a href="#contato" class="btn btn-drawer btn-drawer-outline">Contate-nos</a>
+        </div>
+      </div>
+      <div class="nav-drawer-backdrop" id="nav-drawer-backdrop" aria-hidden="true"></div>
+      <div class="nav-right">
+        <a href="#" class="nav-icon" aria-label="Informações"><span>i</span></a>
+        <a href="#" class="nav-icon nav-icon-fb" aria-label="Facebook"><span>f</span></a>
+        <a href="#contato" class="btn btn-header btn-primary">Agendar</a>
+        <a href="#contato" class="btn btn-header btn-outline-header">Contate-nos</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-bg" role="img" aria-hidden="true">
+        <img src="images/hero.png" alt="">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content container">
+        <p class="hero-tagline">Bem-vinda ao seu refúgio</p>
+        <h1 class="hero-title">Beleza que <em>revela</em> quem você é</h1>
+        <p class="hero-text">Cabelo, unhas, maquiagem e cuidados com a pele. Um espaço pensado para você se sentir especial.</p>
+        <a href="#contato" class="btn btn-primary">Agendar horário</a>
+      </div>
+      <div class="hero-scroll">
+        <span>Role para descobrir</span>
+        <div class="scroll-icon"></div>
+      </div>
+    </section>
+
+    <section id="servicos" class="servicos">
+      <div class="container">
+        <div class="servicos-intro">
+          <p class="servicos-tag">— Nossos serviços</p>
+          <h2 class="servicos-title">Beleza completa em um só lugar</h2>
+          <p class="servicos-desc">Conheça todos os serviços que oferecemos para cuidar de você de forma profissional e personalizada.</p>
+          <div class="servicos-buttons">
+            <a href="#contato" class="btn btn-agendar">Agendar agora</a>
+            <a href="#contato" class="btn btn-orcamento">Solicitar orçamento</a>
+          </div>
+        </div>
+        <div class="servicos-paineis" role="tablist" aria-label="Serviços">
+          <article class="servico-panel expandido" role="tab" aria-selected="true" tabindex="0" data-servico="01">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">1</div>
+              <h3 class="servico-panel-titulo">Corte e coloração</h3>
+            </div>
+            <p class="servico-panel-desc">Cortes modernos e colorações personalizadas que realçam sua beleza natural.</p>
+          </article>
+          <article class="servico-panel" role="tab" aria-selected="false" tabindex="0" data-servico="02">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">2</div>
+              <h3 class="servico-panel-titulo">Unhas</h3>
+            </div>
+            <p class="servico-panel-desc">Manicure, pedicure, alongamento e nail art para mãos e pés impecáveis.</p>
+          </article>
+          <article class="servico-panel" role="tab" aria-selected="false" tabindex="0" data-servico="03">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">3</div>
+              <h3 class="servico-panel-titulo">Maquiagem</h3>
+            </div>
+            <p class="servico-panel-desc">Maquiagem para o dia a dia, eventos e noivas com produtos de qualidade.</p>
+          </article>
+          <article class="servico-panel" role="tab" aria-selected="false" tabindex="0" data-servico="04">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">4</div>
+              <h3 class="servico-panel-titulo">Pele</h3>
+            </div>
+            <p class="servico-panel-desc">Limpeza de pele, peeling, drenagem e tratamentos faciais.</p>
+          </article>
+          <article class="servico-panel" role="tab" aria-selected="false" tabindex="0" data-servico="05">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">5</div>
+              <h3 class="servico-panel-titulo">Hidratação</h3>
+            </div>
+            <p class="servico-panel-desc">Tratamentos capilares e hidratações que devolvem vitalidade aos fios.</p>
+          </article>
+          <article class="servico-panel" role="tab" aria-selected="false" tabindex="0" data-servico="06">
+            <div class="servico-panel-topo">
+              <div class="servico-panel-numero">6</div>
+              <h3 class="servico-panel-titulo">Estética corporal</h3>
+            </div>
+            <p class="servico-panel-desc">Cuidados completos para corpo e bem-estar com profissionais especializados.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="sobre">
+      <div class="container sobre-grid">
+        <div class="sobre-imagem">
+          <img src="images/hero.png" alt="Salão Beauty - ambiente acolhedor" class="sobre-img">
+        </div>
+        <div class="sobre-conteudo">
+          <p class="section-tag">Quem somos</p>
+          <h2 class="section-title">Um espaço feito para você</h2>
+          <p>O Lumiar nasceu do desejo de oferecer mais do que um salão: um lugar onde cada cliente é recebida com cuidado e atenção. Nossa equipe é formada por profissionais apaixonados e em constante atualização.</p>
+          <p>Valorizamos produtos de qualidade, ambientes aconchegantes e um atendimento que faz você se sentir em casa.</p>
+          <a href="#contato" class="btn btn-outline">Fale conosco</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="produtos-utilizados" aria-label="Produtos que utilizamos">
+      <div class="container">
+        <p class="produtos-tag">— Marcas e produtos</p>
+        <h2 class="produtos-titulo">Produtos que utilizamos</h2>
+      </div>
+      <div class="produtos-carousel">
+        <div class="produtos-track" aria-hidden="true">
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <!-- Duplicados para loop infinito -->
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+            <div class="produtos-item"><img src="images/capilar1.png" alt="Produto capilar 1"></div>
+            <div class="produtos-item"><img src="images/capilar2.png" alt="Produto capilar 2"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container">
+        <h2 class="cta-title">Pronta para realçar sua beleza?</h2>
+        <p class="cta-text">Agende seu horário e venha nos conhecer.</p>
+        <a href="#contato" class="btn btn-primary btn-large">Agendar agora</a>
+      </div>
+    </section>
+
+    <section id="depoimentos" class="depoimentos">
+      <div class="container">
+        <div class="depoimentos-header">
+          <div class="depoimentos-titulo-block">
+            <p class="depoimentos-tag">— Depoimentos</p>
+            <h2 class="depoimentos-titulo">O que nossos clientes dizem</h2>
+          </div>
+          <div class="depoimentos-intro">
+            <p class="depoimentos-desc">Conheça a experiência de quem já confiou nos serviços da Beauty e saiu satisfeito.</p>
+            <div class="depoimentos-buttons">
+              <a href="#contato" class="btn btn-depoimento-outline">Agende sua visita</a>
+              <a href="#contato" class="btn btn-depoimento-roxo">Entre em contato</a>
+            </div>
+          </div>
+        </div>
+        <div class="depoimentos-slider">
+          <div class="depoimentos-track">
+            <article class="depoimento-card">
+              <span class="depoimento-aspas">"</span>
+              <p class="depoimento-texto">Adorei o atendimento no Beauty. A equipe é muito atenciosa e o resultado do meu cabelo ficou exatamente como eu queria. Voltarei com certeza.</p>
+              <div class="depoimento-autor">
+                <div class="depoimento-foto" aria-hidden="true">M</div>
+                <div>
+                  <strong class="depoimento-nome">Marina Silva</strong>
+                  <p class="depoimento-cargo">Cliente de coloração</p>
+                </div>
+              </div>
+            </article>
+            <article class="depoimento-card">
+              <span class="depoimento-aspas">"</span>
+              <p class="depoimento-texto">Procurava um salão moderno em São Paulo e encontrei no Beauty. Profissionais competentes, ambiente limpo e acolhedor. Recomendo para todas as amigas.</p>
+              <div class="depoimento-autor">
+                <div class="depoimento-foto" aria-hidden="true">C</div>
+                <div>
+                  <strong class="depoimento-nome">Carolina Martins</strong>
+                  <p class="depoimento-cargo">Cliente de alisamento</p>
+                </div>
+              </div>
+            </article>
+            <article class="depoimento-card">
+              <span class="depoimento-aspas">"</span>
+              <p class="depoimento-texto">Fiz manicure e pedicure e amei o resultado. Unhas impecáveis e o ambiente é muito aconchegante. Já indiquei para minha família.</p>
+              <div class="depoimento-autor">
+                <div class="depoimento-foto" aria-hidden="true">A</div>
+                <div>
+                  <strong class="depoimento-nome">Amanda Costa</strong>
+                  <p class="depoimento-cargo">Cliente de unhas</p>
+                </div>
+              </div>
+            </article>
+            <article class="depoimento-card">
+              <span class="depoimento-aspas">"</span>
+              <p class="depoimento-texto">A maquiagem para o meu casamento ficou perfeita! Equipe profissional e atenciosa. Fui elogiada o dia todo.</p>
+              <div class="depoimento-autor">
+                <div class="depoimento-foto" aria-hidden="true">J</div>
+                <div>
+                  <strong class="depoimento-nome">Juliana Ferreira</strong>
+                  <p class="depoimento-cargo">Cliente de maquiagem</p>
+                </div>
+              </div>
+            </article>
+            <article class="depoimento-card">
+              <span class="depoimento-aspas">"</span>
+              <p class="depoimento-texto">Faço limpeza de pele há um ano no Beauty. Minha pele nunca esteve tão boa. Super recomendo os tratamentos faciais.</p>
+              <div class="depoimento-autor">
+                <div class="depoimento-foto" aria-hidden="true">R</div>
+                <div>
+                  <strong class="depoimento-nome">Rafaela Souza</strong>
+                  <p class="depoimento-cargo">Cliente de estética facial</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="depoimentos-controles">
+            <button type="button" class="depoimentos-nav depoimentos-prev" aria-label="Depoimentos anteriores">
+              <span aria-hidden="true">‹</span>
+            </button>
+            <div class="depoimentos-dots" aria-label="Indicadores do slide"></div>
+            <button type="button" class="depoimentos-nav depoimentos-next" aria-label="Próximos depoimentos">
+              <span aria-hidden="true">›</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="galeria">
+      <div class="container">
+        <div class="galeria-header">
+          <div class="galeria-titulo-block">
+            <p class="galeria-tag">— Galeria de trabalhos</p>
+            <h2 class="galeria-titulo">Veja nossos serviços em ação</h2>
+          </div>
+          <div class="galeria-intro">
+            <p class="galeria-desc">Conheça o salão Beauty através de fotos dos nossos ambientes modernos e dos resultados profissionais que entregamos todos os dias.</p>
+            <div class="galeria-buttons">
+              <a href="#servicos" class="btn btn-galeria-roxo">Ver mais serviços</a>
+              <a href="#contato" class="btn btn-galeria-escuro">Agende seu horário</a>
+            </div>
+          </div>
+        </div>
+        <div class="galeria-grid">
+          <div class="galeria-item">
+            <img src="images/capilar1.png" alt="Resultado tratamento capilar">
+          </div>
+          <div class="galeria-item">
+            <img src="images/capilar2.png" alt="Resultado tratamento capilar">
+          </div>
+          <div class="galeria-item">
+            <img src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=600&q=80" alt="Corte de cabelo no salão">
+          </div>
+          <div class="galeria-item">
+            <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=600&q=80" alt="Manicure e unhas">
+          </div>
+          <div class="galeria-item">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=80" alt="Finalização de cabelo">
+          </div>
+          <div class="galeria-item">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80" alt="Unhas decoradas">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contato">
+      <div class="container">
+        <div class="contato-grid">
+          <div class="contato-info">
+            <p class="contato-tag">— Fale conosco</p>
+            <h2 class="contato-titulo">Contato</h2>
+            <p class="contato-desc">Venha nos visitar ou entre em contato pelo formulário. Estamos prontos para atender você.</p>
+            <div class="contato-item">
+              <strong class="contato-label">Endereço</strong>
+              <p>Rua das Flores, 123 — Centro</p>
+            </div>
+            <div class="contato-item">
+              <strong class="contato-label">Telefone</strong>
+              <p>(11) 99999-9999</p>
+            </div>
+            <div class="contato-item">
+              <strong class="contato-label">Horário</strong>
+              <p>Seg a Sáb: 9h às 19h</p>
+            </div>
+          </div>
+          <form class="contato-form" id="form-contato" novalidate>
+            <div class="form-feedback" id="form-feedback" role="status" aria-live="polite" tabindex="-1" hidden></div>
+            <div class="form-group">
+              <label for="nome">Nome completo <span class="obrigatorio">*</span></label>
+              <input type="text" id="nome" name="nome" required placeholder="Ex: Maria Silva" autocomplete="name" maxlength="120">
+              <span class="form-erro" id="erro-nome"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-mail <span class="obrigatorio">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com" autocomplete="email">
+                <span class="form-erro" id="erro-email"></span>
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" autocomplete="tel">
+                <span class="form-erro" id="erro-telefone"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto" aria-describedby="erro-assunto">
+                <option value="">Selecione o assunto</option>
+                <option value="agendamento">Agendamento</option>
+                <option value="orcamento">Orçamento</option>
+                <option value="duvida">Dúvida</option>
+                <option value="outro">Outro</option>
+              </select>
+              <span class="form-erro" id="erro-assunto"></span>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem <span class="obrigatorio">*</span></label>
+              <textarea id="mensagem" name="mensagem" rows="5" required placeholder="Conte-nos como podemos ajudar..." minlength="10" maxlength="1000"></textarea>
+              <span class="form-contador"><span id="contador-msg">0</span>/1000</span>
+              <span class="form-erro" id="erro-mensagem"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-form" id="btn-enviar">
+              <span class="btn-texto">Enviar mensagem</span>
+              <span class="btn-loading" aria-hidden="true">Enviando...</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">Beauty</a>
+        <p class="footer-slogan">Beleza e cuidado em um só lugar.</p>
+      </div>
+      <div class="footer-links">
+        <h3 class="footer-titulo">Links</h3>
+        <ul>
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#galeria">Galeria</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-contato">
+        <h3 class="footer-titulo">Contato</h3>
+        <p class="footer-info">Rua das Flores, 123 — Centro</p>
+        <p class="footer-info"><a href="tel:+5511999999999">(11) 99999-9999</a></p>
+        <p class="footer-info">Seg a Sáb: 9h às 19h</p>
+      </div>
+      <div class="footer-redes">
+        <h3 class="footer-titulo">Redes sociais</h3>
+        <div class="footer-icons">
+          <a href="#" class="footer-icon" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="footer-icon" aria-label="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copy">&copy; 2025 Beauty Salão de Beleza. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
