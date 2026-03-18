@@ -661,7 +661,7 @@ ul {
 }
 
 .servico-panel:not(.expandido) {
-  background: linear-gradient(180deg, #1a1a1a 0%, #3d3d3d 50%, #4a4a4a 100%);
+  background: #0f0f0f;
   border-color: rgba(80, 80, 80, 0.8);
   justify-content: flex-start;
 }
@@ -702,10 +702,17 @@ ul {
 .servico-panel.expandido {
   flex: 1 1 40%;
   min-width: 280px;
-  height: 550px;
+  height: 540px;
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1.75rem 1.5rem;
+  background: #0f0f0f;
+  border-color: rgba(80, 80, 80, 0.8);
+}
+
+/* Card premium: mais espaço vertical para conteúdo e imagem */
+.servico-panel[data-servico="01"].expandido {
+  height: 540px;
 }
 
 .servico-panel-topo {
@@ -769,7 +776,207 @@ ul {
   opacity: 1;
   visibility: visible;
   height: auto;
-  padding-top: 1.25rem;
+  margin-top: 1rem;
+  padding-top: 0;
+  color: var(--cor-branco);
+}
+
+.servico-panel.expandido .servico-panel-titulo {
+  color: var(--cor-branco);
+}
+
+.servico-panel.expandido .servico-panel-numero {
+  border: 2px solid var(--cor-roxo);
+  color: var(--cor-branco);
+}
+
+/* Imagem do card (aparece apenas quando expandido) */
+.servico-panel-imagem {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  transition: opacity var(--transicao), visibility var(--transicao), height var(--transicao), margin-top var(--transicao);
+}
+
+.servico-panel.expandido .servico-panel-imagem {
+  opacity: 1;
+  visibility: visible;
+  height: clamp(180px, 30vh, 260px);
+  margin-top: 1.25rem;
+}
+
+.servico-panel-imagem-bg {
+  display: none;
+}
+
+/* ===== Card "Corte e coloração" (layout tipo mock) ===== */
+.servico-panel-layout {
+  width: 100%;
+}
+
+.servico-panel:not(.expandido) .servico-panel-layout {
+  display: none;
+}
+
+.servico-panel.expandido .servico-panel-layout {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2.5rem;
+  height: 100%;
+}
+
+.servico-panel.expandido {
+  height: 540px;
+}
+
+.servico-panel.expandido .servico-panel-esquerda {
+  flex: 1 1 50%;
+  min-width: 240px;
+  max-width: 520px;
+}
+
+.servico-panel.expandido .servico-panel-desc {
+  /* override do estilo padrão (que "empurra" texto para o fim) */
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1.55rem;
+  line-height: 1.25;
+  max-width: 26ch;
+}
+
+.servico-panel.expandido .servico-panel-imagem {
+  flex: 0 0 50%;
+  margin-top: 0;
+  height: 100%;
+  border-radius: 16px;
+}
+
+.servico-panel.expandido .servico-panel-imagem-bg {
+  border-radius: inherit;
+}
+
+.servico-panel.expandido .servico-panel-cta {
+  margin-top: 1rem;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-orcamento,
+.servico-panel.expandido .servico-panel-cta .btn-agendar {
+  background: var(--cor-roxo);
+  border-color: var(--cor-roxo);
+  color: var(--cor-branco);
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-orcamento:hover,
+.servico-panel.expandido .servico-panel-cta .btn-agendar:hover {
+  transform: none;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-orcamento:hover,
+.servico-panel.expandido .servico-panel-cta .btn-agendar:hover {
+  background: var(--cor-roxo-hover);
+  border-color: var(--cor-roxo-hover);
+  color: var(--cor-branco);
+  /* Evita o deslocamento global do ".btn:hover" que estava cortando no card */
+  transform: none;
+}
+
+.servico-panel.expandido .servico-panel-cta {
+  overflow: visible;
+}
+
+@media (max-width: 900px) {
+  /* Evita corte por altura fixa no mobile */
+  .servico-panel.expandido {
+    height: auto;
+  }
+
+  .servico-panel.expandido .servico-panel-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .servico-panel.expandido .servico-panel-esquerda {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .servico-panel.expandido .servico-panel-imagem {
+    flex-basis: auto;
+    width: 100%;
+    height: clamp(200px, 28vh, 280px);
+    margin-top: 0;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .servico-panel.expandido .servico-panel-desc {
+    max-width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .servico-panel-premium-titulo {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+  }
+
+  .servico-panel-premium-subtitulo {
+    font-size: 1rem;
+  }
+}
+
+.servico-panel-cta {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  transition: opacity var(--transicao), visibility var(--transicao), height var(--transicao), margin-top var(--transicao);
+}
+
+.servico-panel.expandido .servico-panel-cta {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  margin-top: 1rem;
+}
+
+/* Estilo dos botões dentro do card preto */
+.servico-panel.expandido .servico-panel-cta .btn-orcamento {
+  background: var(--cor-roxo);
+  border-color: var(--cor-roxo);
+  color: var(--cor-branco);
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-orcamento:hover {
+  background: var(--cor-roxo-hover);
+  border-color: var(--cor-roxo-hover);
+  color: var(--cor-branco);
+  transform: none !important;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-agendar:hover {
+  transform: none !important;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn:hover {
+  transform: none !important;
 }
 
 /* ===== Sobre ===== */
@@ -1562,6 +1769,38 @@ ul {
   text-align: center;
 }
 
+/* ===== Setinha do accordion no mobile ===== */
+.servico-panel-arrow {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: transform var(--transicao), background var(--transicao), border-color var(--transicao);
+}
+
+.servico-panel-arrow::before {
+  content: "›";
+  display: block;
+  color: var(--cor-roxo);
+  font-size: 1.25rem;
+  transform: translateY(1px) rotate(0deg);
+}
+
+.servico-panel.expandido .servico-panel-arrow {
+  transform: rotate(90deg);
+  background: var(--cor-roxo);
+}
+
+.servico-panel.expandido .servico-panel-arrow::before {
+  color: var(--cor-branco);
+}
+
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
@@ -1685,11 +1924,50 @@ ul {
   }
 
   .servicos-paineis {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 0.5rem;
-    min-height: 320px;
-    -webkit-overflow-scrolling: touch;
+    /* No mobile: lista vertical (sem rolagem horizontal) */
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding-bottom: 0;
+    min-height: auto;
+    -webkit-overflow-scrolling: auto;
+    gap: 0.75rem;
+  }
+
+  .servico-panel-arrow {
+    display: inline-flex;
+  }
+
+  /* Animação de abrir/fechar no mobile (sem display:none) */
+  .servico-panel-layout {
+    display: flex !important;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: scaleY(0.98);
+    transform-origin: top;
+    transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease,
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .servico-panel.expandido .servico-panel-layout {
+    max-height: 2000px; /* altura suficiente para o conteúdo */
+    opacity: 1;
+    transform: scaleY(1);
+    pointer-events: auto;
+  }
+
+  .servico-panel.expandido .servico-panel-imagem {
+    opacity: 1 !important;
+    visibility: visible !important;
+    margin-top: 0 !important;
+    height: clamp(200px, 28vh, 280px);
+  }
+
+  .servico-panel.expandido .servico-panel-imagem {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .servicos-paineis::-webkit-scrollbar {
@@ -1702,13 +1980,45 @@ ul {
   }
 
   .servico-panel {
-    flex: 0 0 56px;
-    min-width: 56px;
+    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.25rem 1.25rem;
   }
 
   .servico-panel.expandido {
-    min-width: 260px;
-    flex: 1 1 260px;
+    min-width: 0;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+  }
+
+  .servico-panel:not(.expandido) .servico-panel-topo {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .servico-panel-topo {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .servico-panel-arrow {
+    margin-left: auto;
+  }
+
+  .servico-panel:not(.expandido) .servico-panel-titulo {
+    display: block;
+    color: var(--cor-branco);
+    font-size: 1.2rem;
+    white-space: normal;
+    max-width: none;
+    text-overflow: clip;
   }
 
   .servico-panel-titulo {
@@ -1792,5 +2102,234 @@ ul {
 
   .cta {
     padding: 3rem 0;
+  }
+
+  .servico-panel-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* ===== Premium card 01 (Corte e coloração) ===== */
+@keyframes premiumFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.servico-panel.expandido {
+  overflow: hidden;
+}
+
+.servico-panel.expandido .servico-panel-topo {
+  margin-bottom: 0.6rem;
+  opacity: 0.95;
+}
+
+.servico-panel.expandido .servico-panel-titulo {
+  font-size: 1.25rem;
+  color: var(--cor-branco);
+}
+
+.servico-panel.expandido .servico-panel-numero {
+  border-color: rgba(107, 78, 154, 0.9);
+  color: var(--cor-branco);
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.servico-panel.expandido .servico-panel-desc {
+  /* remove o max-width que deixava o conteúdo amontoado */
+  max-width: none;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.servico-panel-premium-content {
+  animation: none !important;
+}
+
+.servico-panel-premium-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-branco);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.servico-panel-premium-subtitulo {
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.servico-panel-premium-beneficios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.servico-panel-premium-beneficios li {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.servico-panel-premium-beneficios li::before {
+  content: "✓";
+  color: var(--cor-roxo);
+  font-weight: 800;
+  margin-top: 0.1rem;
+}
+
+.servico-panel-premium-content,
+.servico-panel-micro {
+  will-change: transform, opacity;
+}
+
+.servico-panel.expandido .servico-panel-micro {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  animation: none !important;
+  animation-delay: 0s !important;
+}
+
+.servico-panel.expandido .servico-panel-micro span {
+  display: inline-flex;
+  align-items: center;
+}
+
+.servico-panel.expandido .servico-panel-cta {
+  margin-top: 1.15rem;
+  justify-content: flex-start;
+  gap: 0.9rem;
+}
+
+/* Botão principal (roxo) */
+.servico-panel.expandido .servico-panel-cta .btn-agendar {
+  background: var(--cor-roxo);
+  border-color: var(--cor-roxo);
+  color: var(--cor-branco);
+  box-shadow: 0 10px 30px rgba(107, 78, 154, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-agendar:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(107, 78, 154, 0.35);
+}
+
+/* Botão secundário (outline / transparente) */
+.servico-panel.expandido .servico-panel-cta .btn-orcamento {
+  background: transparent;
+  border-color: rgba(107, 78, 154, 0.95);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: none;
+}
+
+.servico-panel.expandido .servico-panel-cta .btn-orcamento:hover {
+  background: rgba(107, 78, 154, 0.18);
+  border-color: var(--cor-roxo-hover);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagem (background) com overlay e badge */
+.servico-panel.expandido .servico-panel-imagem {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.servico-panel.expandido .servico-panel-imagem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.20) 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 0;
+}
+
+.servico-panel.expandido:hover .servico-panel-imagem {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
+/* Força o card 1 usar o mesmo visual da imagem dos demais */
+.servico-panel[data-servico="01"].expandido .servico-panel-imagem {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  border-radius: 16px;
+  position: relative;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.servico-panel[data-servico="01"].expandido .servico-panel-imagem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.20) 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  z-index: 0;
+}
+
+.servico-panel[data-servico="01"].expandido:hover .servico-panel-imagem {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
+.servico-panel-badge {
+  position: absolute;
+  z-index: 1;
+  top: 16px;
+  left: 16px;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(45, 41, 38, 0.55);
+  border: 1px solid rgba(107, 78, 154, 0.65);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 650;
+  font-size: 0.98rem;
+  backdrop-filter: blur(6px);
+}
+
+@media (max-width: 900px) {
+  .servico-panel.expandido .servico-panel-titulo {
+    font-size: 1.15rem;
+  }
+
+  .servico-panel-premium-titulo {
+    font-size: 1.65rem;
+  }
+
+  .servico-panel.expandido .servico-panel-micro {
+    font-size: 0.9rem;
   }
 }

@@ -73,19 +73,72 @@
   const paineis = document.querySelectorAll('.servico-panel');
   if (paineis.length) {
     paineis.forEach(function (panel) {
-      panel.addEventListener('click', function () {
+      panel.addEventListener('click', function (e) {
+        var ehMobile = window.matchMedia('(max-width: 768px)').matches;
+        var alvo = e.target;
+        var clicouNaSeta = alvo.closest('.servico-panel-arrow');
+        var clicouNoTopo = alvo.closest('.servico-panel-topo');
+
+        // Não togglear quando clicar em links/botões dentro do card (CTA).
+        var clicouEmInterativo = alvo.closest('a,button,.btn');
+        if (clicouEmInterativo && !clicouNaSeta) return;
+
+        // Mobile: só permite abrir/fechar pelo topo/seta.
+        if (ehMobile && !clicouNaSeta && !clicouNoTopo) return;
+
+        function setAriaArrow(card, aberto) {
+          var arrow = card.querySelector('.servico-panel-arrow');
+          if (arrow) arrow.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        }
+
+        function scrollPanelToTop(card) {
+          var header = document.querySelector('.header');
+          var offset = header ? header.offsetHeight + 12 : 0;
+          var rect = card.getBoundingClientRect();
+          var top = rect.top + window.pageYOffset - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+
+        // MOBILE
+        if (ehMobile) {
+          var estaAberto = this.classList.contains('expandido');
+          if (estaAberto) {
+            this.classList.remove('expandido');
+            this.setAttribute('aria-selected', 'false');
+            setAriaArrow(this, false);
+            return;
+          }
+
+          paineis.forEach(function (p) {
+            p.classList.remove('expandido');
+            p.setAttribute('aria-selected', 'false');
+            setAriaArrow(p, false);
+          });
+
+          this.classList.add('expandido');
+          this.setAttribute('aria-selected', 'true');
+          setAriaArrow(this, true);
+          scrollPanelToTop(this);
+          return;
+        }
+
+        // DESKTOP: mantém o comportamento anterior (abrir um por vez).
         if (this.classList.contains('expandido')) return;
         paineis.forEach(function (p) {
           p.classList.remove('expandido');
           p.setAttribute('aria-selected', 'false');
+          setAriaArrow(p, false);
         });
         this.classList.add('expandido');
         this.setAttribute('aria-selected', 'true');
+        setAriaArrow(this, true);
       });
       panel.addEventListener('keydown', function (e) {
         if (e.key !== 'Enter' && e.key !== ' ') return;
         e.preventDefault();
-        this.click();
+        var arrow = this.querySelector('.servico-panel-arrow');
+        if (arrow) arrow.click();
+        else this.click();
       });
     });
   }
