@@ -417,6 +417,60 @@
     }
   }
 
+  // ===== WhatsApp fixo: aparece só depois do hero + tooltip 5s =====
+  (function () {
+    const wppBtn = document.querySelector('.btn-wpp-fixo');
+    const wppText = wppBtn ? wppBtn.querySelector('.wpp-text') : null;
+    const hero = document.querySelector('#inicio');
+    if (!wppBtn || !hero) return;
+
+    function mostrarTooltipUmaVez() {
+      const isMobile = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (!isMobile || !wppText) return;
+
+      const storageKey = 'wppFixoTooltipVisto';
+      try {
+        if (localStorage.getItem(storageKey)) return;
+        localStorage.setItem(storageKey, '1');
+      } catch (e) {
+        // segue mesmo assim
+      }
+
+      wppBtn.classList.add('btn-wpp-fixo--with-text');
+      wppText.classList.add('wpp-text--show');
+      window.setTimeout(function () {
+        wppText.classList.remove('wpp-text--show');
+        wppBtn.classList.remove('btn-wpp-fixo--with-text');
+      }, 5000);
+    }
+
+    let estavaVisivel = false;
+    const io = new IntersectionObserver(function (entries) {
+      const entry = entries[0];
+      const saiuDoHero = !entry.isIntersecting;
+      wppBtn.classList.toggle('btn-wpp-fixo--visible', saiuDoHero);
+
+      // Ping sempre que "aparecer" (transição de oculto -> visível)
+      if (saiuDoHero && !estavaVisivel) {
+        // reinicia a animação caso tenha sido aplicada recentemente
+        wppBtn.classList.remove('btn-wpp-fixo--ping');
+        // força reflow para garantir replay da animação
+        void wppBtn.offsetWidth;
+        wppBtn.classList.add('btn-wpp-fixo--ping');
+        window.setTimeout(function () {
+          wppBtn.classList.remove('btn-wpp-fixo--ping');
+        }, 650);
+
+        // Tooltip só 1x (primeira vez), controlado por localStorage
+        mostrarTooltipUmaVez();
+      }
+
+      estavaVisivel = saiuDoHero;
+    }, { threshold: 0.15 });
+
+    io.observe(hero);
+  })();
+
   // ===== Scroll suave para âncoras (fallback para navegadores antigos) =====
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
