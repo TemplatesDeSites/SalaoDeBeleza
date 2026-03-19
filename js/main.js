@@ -99,8 +99,19 @@
           window.scrollTo({ top: top, behavior: 'smooth' });
         }
 
+        function getPanelTop(card) {
+          var header = document.querySelector('.header');
+          var offset = header ? header.offsetHeight + 12 : 0;
+          var rect = card.getBoundingClientRect();
+          return rect.top + window.pageYOffset - offset;
+        }
+
         // MOBILE
         if (ehMobile) {
+          if (document.activeElement && document.activeElement.blur) {
+            document.activeElement.blur();
+          }
+
           var estaAberto = this.classList.contains('expandido');
           if (estaAberto) {
             this.classList.remove('expandido');
@@ -118,7 +129,16 @@
           this.classList.add('expandido');
           this.setAttribute('aria-selected', 'true');
           setAriaArrow(this, true);
-          scrollPanelToTop(this);
+
+          // Sincroniza com a animação do mobile (max-height/opacity/transform).
+          // Isso evita medir o "top" no meio da transição (principalmente ao abrir para baixo).
+          if (window.__servicoScrollTimer) {
+            clearTimeout(window.__servicoScrollTimer);
+          }
+          window.__servicoScrollTimer = setTimeout(function () {
+            var topDepois = getPanelTop(this);
+            window.scrollTo({ top: topDepois, behavior: 'smooth' });
+          }.bind(this), 50);
           return;
         }
 

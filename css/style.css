@@ -2,8 +2,9 @@
 :root {
   --cor-primaria: #c9a87c;
   --cor-primaria-escura: #a88b5c;
-  --cor-roxo: #6b4e9a;
-  --cor-roxo-hover: #5a4185;
+  --cor-roxo: #7b2cff;
+  --cor-roxo-hover: #6a21e6;
+  --cor-wpp: #25d366;
   --cor-acento: #e8d5c4;
   --cor-fundo: #faf8f5;
   --cor-fundo-escuro: #2d2926;
@@ -497,6 +498,226 @@ ul {
   color: var(--cor-branco);
 }
 
+/* ===== CTAs (roxos) - alto poder de conversão ===== */
+@keyframes ctaPulseGlow {
+  0% {
+    box-shadow: 0 10px 30px rgba(123, 44, 255, 0.25), 0 0 0 rgba(123, 44, 255, 0);
+  }
+  50% {
+    box-shadow: 0 14px 40px rgba(123, 44, 255, 0.35), 0 0 18px rgba(123, 44, 255, 0.35);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(123, 44, 255, 0.25), 0 0 0 rgba(123, 44, 255, 0);
+  }
+}
+
+@keyframes ctaShine {
+  from {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  to {
+    transform: translateX(140%) skewX(-20deg);
+  }
+}
+
+.btn-primary,
+.btn-drawer.btn-drawer-primary,
+.btn-agendar,
+.btn-depoimento-roxo,
+.btn-galeria-roxo,
+.btn-header.btn-primary,
+.hero .btn-primary,
+.cta .btn-primary {
+  background: var(--cor-roxo);
+  color: var(--cor-branco);
+  border-color: var(--cor-roxo);
+  border-radius: 16px;
+  min-height: 48px;
+  padding: 0.95rem 1.85rem;
+  box-shadow: 0 10px 30px rgba(123, 44, 255, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease,
+    border-color 0.3s ease, filter 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  /* sobrescreve o translate do hover global .btn:hover */
+  transform: translateY(0);
+}
+
+.btn-primary:hover,
+.btn-drawer.btn-drawer-primary:hover,
+.btn-agendar:hover,
+.btn-depoimento-roxo:hover,
+.btn-galeria-roxo:hover,
+.btn-header.btn-primary:hover,
+.hero .btn-primary:hover,
+.cta .btn-primary:hover {
+  background: var(--cor-roxo-hover);
+  border-color: var(--cor-roxo-hover);
+  transform: scale(1.03) translateY(0) !important;
+  box-shadow: 0 16px 50px rgba(123, 44, 255, 0.35), 0 0 22px rgba(123, 44, 255, 0.35);
+  filter: brightness(1.03);
+}
+
+.btn-primary:active,
+.btn-drawer.btn-drawer-primary:active,
+.btn-agendar:active,
+.btn-depoimento-roxo:active,
+.btn-galeria-roxo:active {
+  transform: scale(0.97) translateY(0) !important;
+}
+
+/* brilho/shine ao passar o mouse */
+.btn-primary::after,
+.btn-drawer.btn-drawer-primary::after,
+.btn-agendar::after,
+.btn-depoimento-roxo::after,
+.btn-galeria-roxo::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 40%;
+  height: 220%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.btn-drawer.btn-drawer-primary:hover::after,
+.btn-agendar:hover::after,
+.btn-depoimento-roxo:hover::after,
+.btn-galeria-roxo:hover::after {
+  opacity: 1;
+  animation: ctaShine 0.9s ease;
+}
+
+/* pulse leve no CTA principal (agendar) */
+.btn-agendar,
+.hero .btn-primary,
+.cta .btn-primary {
+  animation: ctaPulseGlow 2.6s ease-in-out infinite;
+}
+
+.btn-orcamento,
+.btn-outline,
+.btn-depoimento-outline,
+.btn-galeria-escuro,
+.btn-header.btn-outline-header,
+.btn-drawer.btn-drawer-outline {
+  background: transparent;
+  color: var(--cor-roxo);
+  border-color: var(--cor-roxo);
+  border-radius: 16px;
+  min-height: 48px;
+  padding: 0.95rem 1.85rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease,
+    border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-orcamento:hover,
+.btn-outline:hover,
+.btn-depoimento-outline:hover,
+.btn-galeria-escuro:hover,
+.btn-header.btn-outline-header:hover,
+.btn-drawer.btn-drawer-outline:hover {
+  background: var(--cor-roxo);
+  color: var(--cor-branco);
+  border-color: var(--cor-roxo);
+  transform: scale(1.03) translateY(0) !important;
+  box-shadow: 0 16px 50px rgba(123, 44, 255, 0.25), 0 0 20px rgba(123, 44, 255, 0.25);
+}
+
+.btn-orcamento:active,
+.btn-outline:active,
+.btn-depoimento-outline:active,
+.btn-galeria-escuro:active {
+  transform: scale(0.97) translateY(0) !important;
+}
+
+/* ===== Botão WhatsApp (outline com fill esquerda -> direita) ===== */
+.btn-header.btn-outline-header,
+.btn-drawer.btn-drawer-outline,
+.btn-depoimento-roxo {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  background: transparent !important;
+  border-color: var(--cor-wpp) !important;
+  color: var(--cor-wpp) !important;
+}
+
+.btn-header.btn-outline-header::before,
+.btn-drawer.btn-drawer-outline::before,
+.btn-depoimento-roxo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cor-wpp);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn-header.btn-outline-header:hover,
+.btn-drawer.btn-drawer-outline:hover,
+.btn-depoimento-roxo:hover {
+  border-color: var(--cor-wpp) !important;
+  color: var(--cor-branco) !important;
+  background: transparent !important;
+}
+
+.btn-header.btn-outline-header:hover::before,
+.btn-drawer.btn-drawer-outline:hover::before,
+.btn-depoimento-roxo:hover::before {
+  transform: translateX(0);
+}
+
+.btn-header.btn-outline-header:active,
+.btn-drawer.btn-drawer-outline:active,
+.btn-depoimento-roxo:active {
+  transform: scale(0.97) translateY(0) !important;
+}
+
+/* ===== Botão "btn-outline" (roxo) - fill esquerda -> direita ===== */
+.btn-outline {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  background: transparent !important;
+  border-color: var(--cor-roxo) !important;
+  color: var(--cor-roxo) !important;
+}
+
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--cor-roxo);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.btn-outline:hover {
+  border-color: var(--cor-roxo) !important;
+  color: var(--cor-branco) !important;
+  background: transparent !important;
+}
+
+.btn-outline:hover::before {
+  transform: translateX(0);
+}
+
+.btn-outline:active {
+  transform: scale(0.97) translateY(0) !important;
+}
+
 .btn-large {
   padding: 1rem 2.5rem;
   font-size: 1rem;
@@ -621,13 +842,16 @@ ul {
 }
 
 .btn-orcamento {
-  background: var(--cor-fundo-escuro);
-  color: var(--cor-branco);
+  background: transparent;
+  color: var(--cor-roxo);
+  border: 2px solid var(--cor-roxo);
 }
 
 .btn-orcamento:hover {
-  background: #1a1715;
+  background: var(--cor-roxo);
   color: var(--cor-branco);
+  border-color: var(--cor-roxo-hover);
+  transform: scale(1.03) translateY(0);
 }
 
 /* ===== Painéis de serviços (accordion horizontal) ===== */
@@ -661,7 +885,7 @@ ul {
 }
 
 .servico-panel:not(.expandido) {
-  background: #0f0f0f;
+  background: #2d2926;
   border-color: rgba(80, 80, 80, 0.8);
   justify-content: flex-start;
 }
@@ -706,13 +930,8 @@ ul {
   align-items: flex-start;
   justify-content: flex-start;
   padding: 1.75rem 1.5rem;
-  background: #0f0f0f;
+  background: #2d2926;
   border-color: rgba(80, 80, 80, 0.8);
-}
-
-/* Card premium: mais espaço vertical para conteúdo e imagem */
-.servico-panel[data-servico="01"].expandido {
-  height: 540px;
 }
 
 .servico-panel-topo {
@@ -1124,7 +1343,7 @@ ul {
 /* ===== CTA ===== */
 .cta {
   padding: 5rem 0;
-  background: linear-gradient(135deg, var(--cor-primaria-escura) 0%, var(--cor-primaria) 100%);
+  background: #2d2926;
   text-align: center;
 }
 
@@ -1201,14 +1420,29 @@ ul {
   padding: 0.75rem 1.5rem;
   font-size: 0.95rem;
   border-radius: 2rem;
-  background: var(--cor-branco);
-  color: var(--cor-texto);
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: transparent;
+  color: var(--cor-roxo);
+  border: 2px solid var(--cor-roxo);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-depoimento-outline:hover {
-  border-color: var(--cor-roxo);
-  color: var(--cor-roxo);
+  background: var(--cor-roxo);
+  color: var(--cor-branco);
+  border-color: var(--cor-roxo-hover);
+  transform: scale(1.03);
+  box-shadow: 0 16px 50px rgba(123, 44, 255, 0.25), 0 0 20px rgba(123, 44, 255, 0.15);
+}
+
+.btn-depoimento-outline:active {
+  transform: scale(0.97) translateY(0) !important;
 }
 
 .btn-depoimento-roxo {
@@ -1464,7 +1698,7 @@ ul {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   gap: 3rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .contato-tag {
@@ -1509,10 +1743,56 @@ ul {
   margin: 0;
 }
 
+.contato-info {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem 2rem;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(123, 44, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.contato-mapa {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.contato-mapa iframe {
+  width: 100%;
+  height: 260px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.06);
+}
+
 .contato-form {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.07);
+  border: 1px solid rgba(123, 44, 255, 0.16);
+  position: relative;
+}
+
+.contato-form::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(123, 44, 255, 0.45), rgba(123, 44, 255, 0.06));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.contato-form > * {
+  position: relative;
 }
 
 .form-group {
@@ -1543,11 +1823,11 @@ ul {
   padding: 0.9rem 1rem;
   font-family: var(--fonte-texto);
   font-size: 1rem;
-  border: 2px solid var(--cor-acento);
-  border-radius: 10px;
-  background: var(--cor-branco);
+  border: 2px solid rgba(123, 44, 255, 0.22);
+  border-radius: 12px;
+  background: #ffffff;
   color: var(--cor-texto);
-  transition: border-color var(--transicao), box-shadow var(--transicao);
+  transition: border-color var(--transicao), box-shadow var(--transicao), transform 0.2s ease;
 }
 
 .contato-form input::placeholder,
@@ -1559,7 +1839,7 @@ ul {
 .contato-form input:hover,
 .contato-form textarea:hover,
 .contato-form select:hover {
-  border-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(123, 44, 255, 0.38);
 }
 
 .contato-form input:focus,
@@ -1567,7 +1847,7 @@ ul {
 .contato-form select:focus {
   outline: none;
   border-color: var(--cor-roxo);
-  box-shadow: 0 0 0 4px rgba(107, 78, 154, 0.15);
+  box-shadow: 0 0 0 4px rgba(123, 44, 255, 0.18);
 }
 
 .contato-form input.erro,
@@ -1585,7 +1865,7 @@ ul {
 .contato-form select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6562' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237b2cff' d='M6 8L1 3h10z'/%3E%3C/svg%3E\");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   padding-right: 2.5rem;
@@ -1643,6 +1923,15 @@ ul {
 .btn-form:disabled {
   opacity: 0.8;
   cursor: not-allowed;
+}
+
+.btn-form {
+  border-radius: 16px;
+  box-shadow: 0 14px 45px rgba(123, 44, 255, 0.25);
+}
+
+.btn-form:hover {
+  transform: translateY(-2px);
 }
 
 /* ===== Footer ===== */
@@ -1794,7 +2083,7 @@ ul {
 
 .servico-panel.expandido .servico-panel-arrow {
   transform: rotate(90deg);
-  background: var(--cor-roxo);
+  background: transparent;
 }
 
 .servico-panel.expandido .servico-panel-arrow::before {
@@ -1944,17 +2233,16 @@ ul {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transform: scaleY(0.98);
+    transform: none;
     transform-origin: top;
-    transition: max-height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease,
-      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: none !important;
     pointer-events: none;
   }
 
   .servico-panel.expandido .servico-panel-layout {
     max-height: 2000px; /* altura suficiente para o conteúdo */
     opacity: 1;
-    transform: scaleY(1);
+    transform: none;
     pointer-events: auto;
   }
 
@@ -1977,6 +2265,20 @@ ul {
   .servicos-paineis::-webkit-scrollbar-thumb {
     background: var(--cor-acento);
     border-radius: 3px;
+  }
+
+  /* Mobile: ao abrir, mostrar a imagem antes do texto */
+  .servico-panel.expandido .servico-panel-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .servico-panel.expandido .servico-panel-imagem {
+    order: 0;
+  }
+
+  .servico-panel.expandido .servico-panel-esquerda {
+    order: 1;
   }
 
   .servico-panel {
@@ -2058,6 +2360,26 @@ ul {
       rgba(45, 41, 38, 0.5) 50%,
       rgba(45, 41, 38, 0.7) 100%
     );
+  }
+
+  /* Mobile: botão do formulário mais "cheio" */
+  .btn-form {
+    width: 100%;
+    min-width: 0;
+    align-self: stretch;
+    margin-top: 0.75rem;
+    min-height: 56px;
+    padding: 0.95rem 1.25rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .btn-form:hover {
+    /* evita o "pulo" do translate do .btn:hover no mobile */
+    transform: translateY(0) !important;
   }
 }
 
@@ -2280,31 +2602,6 @@ ul {
 }
 
 /* Força o card 1 usar o mesmo visual da imagem dos demais */
-.servico-panel[data-servico="01"].expandido .servico-panel-imagem {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-  border-radius: 16px;
-  position: relative;
-  transition: transform 0.35s ease, filter 0.35s ease;
-}
-
-.servico-panel[data-servico="01"].expandido .servico-panel-imagem::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.20) 55%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-  z-index: 0;
-}
-
-.servico-panel[data-servico="01"].expandido:hover .servico-panel-imagem {
-  transform: scale(1.01);
-  filter: brightness(1.05);
-}
-
 .servico-panel-badge {
   position: absolute;
   z-index: 1;
