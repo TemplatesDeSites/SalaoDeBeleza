@@ -4,6 +4,7 @@
   --cor-primaria-escura: #a88b5c;
   --cor-roxo: #7b2cff;
   --cor-roxo-hover: #6a21e6;
+  --cor-roxo-claro: #cdbbff;
   --cor-wpp: #25d366;
   --cor-acento: #e8d5c4;
   --cor-fundo: #faf8f5;
@@ -413,7 +414,7 @@ ul {
   z-index: 2;
   max-width: 620px;
   margin-right: auto;
-  margin-left: 1rem;
+  margin-left: 16rem;
 }
 
 .hero-tagline {
@@ -1353,6 +1354,35 @@ ul {
   font-weight: 600;
   color: var(--cor-branco);
   margin-bottom: 0.5rem;
+}
+
+.cta-word {
+  color: var(--cor-roxo-claro); /* roxo clarinho do CTA */
+  display: inline-block;
+  white-space: nowrap;
+  text-shadow: 0 0 18px rgba(123, 44, 255, 0.25);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+/* CTA (botão outline): roxo clarinho + animação de fill */
+.cta .cta-btn-roxo-claro {
+  border-color: var(--cor-roxo-claro) !important;
+  color: var(--cor-roxo-claro) !important;
+}
+
+.cta .cta-btn-roxo-claro::before {
+  background: var(--cor-roxo-claro);
+}
+
+/* Hover CTA: texto e borda pretos */
+.cta .cta-btn-roxo-claro:hover {
+  color: var(--cor-fundo-escuro) !important;
+  border-color: var(--cor-fundo-escuro) !important;
+}
+
+.cta-word--out {
+  opacity: 0;
+  transform: translateY(10px);
 }
 
 .cta-text {
@@ -2380,6 +2410,32 @@ ul {
   .btn-form:hover {
     /* evita o "pulo" do translate do .btn:hover no mobile */
     transform: translateY(0) !important;
+  }
+
+  /* CTA responsivo (título que troca palavra + botão) */
+  .cta-title {
+    font-size: clamp(2rem, 7vw, 2.6rem);
+    line-height: 1.05;
+    padding: 0 0.25rem;
+  }
+
+  .cta-title .cta-word {
+    white-space: normal; /* permite quebra de linha sem estourar */
+    display: inline-block; /* isola melhor a animação no mobile */
+  }
+
+  .cta-text {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta .cta-btn-roxo-claro {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
   }
 }
 

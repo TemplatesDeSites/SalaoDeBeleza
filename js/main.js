@@ -381,6 +381,42 @@
     });
   }
 
+  // ===== Troca de palavras no título do CTA =====
+  const ctaWordEl = document.querySelector('.cta-title .cta-word');
+  if (ctaWordEl) {
+    const wordsAttr = ctaWordEl.getAttribute('data-words') || '';
+    const words = wordsAttr
+      .split(',')
+      .map(function (w) { return (w || '').trim(); })
+      .filter(Boolean);
+
+    const initialWord = (ctaWordEl.textContent || '').trim();
+    let currentIndex = words.length ? words.indexOf(initialWord) : -1;
+    if (currentIndex < 0) currentIndex = 0;
+
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && words.length > 1) {
+      const fadeMs = 200;
+      const intervalMs = 3200;
+      let isSwapping = false;
+
+      function swapWord() {
+        if (isSwapping) return;
+        isSwapping = true;
+
+        ctaWordEl.classList.add('cta-word--out');
+        window.setTimeout(function () {
+          currentIndex = (currentIndex + 1) % words.length;
+          ctaWordEl.textContent = words[currentIndex];
+          ctaWordEl.classList.remove('cta-word--out');
+          isSwapping = false;
+        }, fadeMs);
+      }
+
+      window.setInterval(swapWord, intervalMs);
+    }
+  }
+
   // ===== Scroll suave para âncoras (fallback para navegadores antigos) =====
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
