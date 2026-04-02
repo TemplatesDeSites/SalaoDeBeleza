@@ -17,6 +17,15 @@
   --fonte-texto: 'Outfit', sans-serif;
   --sombra: 0 4px 20px rgba(45, 41, 38, 0.08);
   --transicao: 0.3s ease;
+  --social-instagram-gradient: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  --social-facebook: #1877f2;
 }
 
 *,
@@ -140,26 +149,38 @@ ul {
 .nav-icon {
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
+  border-radius: 30%;
   border: 1px solid var(--cor-texto);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 600;
-  font-style: italic;
   color: var(--cor-texto);
-  transition: background var(--transicao), color var(--transicao), border-color var(--transicao);
+  text-decoration: none;
+  transition:
+    background var(--transicao),
+    color var(--transicao),
+    border-color var(--transicao),
+    transform var(--transicao);
 }
 
-.nav-icon:hover {
-  background: var(--cor-texto);
+.nav-icon svg {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+}
+
+.nav-icon--instagram:hover {
+  background: var(--social-instagram-gradient);
+  border-color: rgba(255, 255, 255, 0.4);
   color: var(--cor-branco);
+  transform: translateY(-2px);
 }
 
-.nav-icon-fb {
-  font-style: normal;
-  font-family: var(--fonte-texto);
+.nav-icon--facebook:hover {
+  background: var(--social-facebook);
+  border-color: var(--social-facebook);
+  color: var(--cor-branco);
+  transform: translateY(-2px);
 }
 
 .btn-header {
@@ -331,15 +352,30 @@ ul {
   .nav-drawer-icon {
     width: 40px;
     height: 40px;
+    border-radius: 30%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--cor-fundo-escuro);
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s, transform 0.2s;
   }
 
   .nav-drawer-icon svg {
     width: 24px;
     height: 24px;
+  }
+
+  .nav-drawer-icon--instagram:hover {
+    background: var(--social-instagram-gradient);
+    color: var(--cor-branco);
+    transform: translateY(-2px);
+  }
+
+  .nav-drawer-icon--facebook:hover {
+    background: var(--social-facebook);
+    color: var(--cor-branco);
+    transform: translateY(-2px);
   }
 
   .nav-drawer-buttons {
@@ -2179,14 +2215,23 @@ ul {
 .footer-icon {
   width: 40px;
   height: 40px;
+  border-radius: 30%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: rgba(255, 255, 255, 0.75);
-  transition: color 0.2s, transform 0.2s;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s, background 0.2s;
 }
 
-.footer-icon:hover {
+.footer-icon--instagram:hover {
+  background: var(--social-instagram-gradient);
+  color: var(--cor-branco);
+  transform: translateY(-2px);
+}
+
+.footer-icon--facebook:hover {
+  background: var(--social-facebook);
   color: var(--cor-branco);
   transform: translateY(-2px);
 }
